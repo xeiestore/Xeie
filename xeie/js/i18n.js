@@ -6,7 +6,16 @@ window.XEIE_I18N = {
   pt: {
     // Announce
     announce: "Envio para toda Luanda · Pedidos personalizados disponíveis",
-    // Nav
+    // Nav (header + drawer)
+    nav_new: "Novidades",
+    nav_bestsellers: "Mais Vendidos",
+    nav_perfumes: "Perfumes",
+    nav_cosmetics: "Cosméticos",
+    nav_jewellery: "Joias",
+    nav_sunglasses: "Óculos de Sol",
+    nav_bags: "Pastas & Mochilas",
+    nav_sale: "Sale",
+    // Nav (footer / old)
     nav_home: "Início",
     nav_products: "Produtos",
     nav_how: "Como Funciona",
@@ -103,6 +112,14 @@ window.XEIE_I18N = {
   },
   en: {
     announce: "Delivery across Luanda · Custom requests available",
+    nav_new: "New",
+    nav_bestsellers: "Bestsellers",
+    nav_perfumes: "Perfumes",
+    nav_cosmetics: "Cosmetics",
+    nav_jewellery: "Jewellery",
+    nav_sunglasses: "Sunglasses",
+    nav_bags: "Bags & Backpacks",
+    nav_sale: "Sale",
     nav_home: "Home",
     nav_products: "Products",
     nav_how: "How it works",
