@@ -21,24 +21,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Announcement bar + Header scroll ----------
   let lastScroll = 0;
   const announceHeight = 36;
+  const hasHero = !!document.querySelector('.hero');
+
+  // On pages without a hero, keep header solid from the start
+  if (!hasHero) {
+    siteHeader?.classList.add('scrolled');
+  }
 
   function handleScroll() {
     const scrollY = window.scrollY;
 
-    // Header solid state
-    if (scrollY > 40) {
-      siteHeader?.classList.add('scrolled');
-    } else {
-      siteHeader?.classList.remove('scrolled');
+    // Header solid state — only toggle on pages that have a hero
+    if (hasHero) {
+      if (scrollY > 40) {
+        siteHeader?.classList.add('scrolled');
+      } else {
+        siteHeader?.classList.remove('scrolled');
+      }
     }
 
-    // Announce bar hide/show
+    // Announce bar hide on scroll down, show near top
     if (scrollY > lastScroll && scrollY > 80) {
       announceBar?.classList.add('hidden');
-      siteHeader?.style.setProperty('top', '0');
+      if (siteHeader) siteHeader.style.top = '0';
     } else {
       announceBar?.classList.remove('hidden');
-      siteHeader?.style.setProperty('top', `${announceHeight}px`);
+      if (siteHeader) siteHeader.style.top = `${announceHeight}px`;
     }
 
     lastScroll = scrollY;
