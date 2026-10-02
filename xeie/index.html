@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <meta name="theme-color" content="#1C1917" />
+
 </head>
 <body>
 
@@ -357,36 +364,16 @@
     </div>
   </section>
 
-  <!-- How it works teaser -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <p class="section-eyebrow" data-i18n="how_title">Como funciona</p>
-        <h2 class="section-title" data-i18n="how_title">Como funciona</h2>
-        <p class="section-desc" data-i18n="how_desc">Simples, transparente e seguro.</p>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">01</div>
-          <h3 class="step-title" data-i18n="how_step1_title">1. Faça o pedido</h3>
-          <p class="step-desc" data-i18n="how_step1_desc">Escolha um produto listado ou descreva o que precisa no formulário de pedido personalizado.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">02</div>
-          <h3 class="step-title" data-i18n="how_step2_title">2. Receba a referência</h3>
-          <p class="step-desc" data-i18n="how_step2_desc">Enviamos um email com o valor exacto e a referência bancária para pagamento.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">03</div>
-          <h3 class="step-title" data-i18n="how_step3_title">3. Receba o produto</h3>
-          <p class="step-desc" data-i18n="how_step3_desc">Após confirmação do pagamento, entregamos em Luanda dentro do prazo combinado.</p>
-        </div>
-      </div>
-
-      <div class="text-center mt-3">
-        <a href="como-funciona.html" class="btn btn-dark" data-i18n="nav_how">Como Funciona</a>
-      </div>
+  <!-- CTA Band — Future Product -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <p class="cta-band-eyebrow" data-i18n="cta_eyebrow">Em breve</p>
+      <h2 class="cta-band-title" data-i18n="cta_title">Novo produto a caminho</h2>
+      <p class="cta-band-desc" data-i18n="cta_desc">Estamos a preparar algo especial. Deixe o seu email e seja o primeiro a saber.</p>
+      <form class="cta-band-form" id="cta-notify-form" onsubmit="return false;">
+        <input type="email" name="email" class="cta-band-input" placeholder="O seu email" data-i18n-placeholder="cta_email_placeholder" required />
+        <button type="submit" class="btn btn-primary cta-band-btn" data-i18n="cta_btn">Avisem-me</button>
+      </form>
     </div>
   </section>
 
