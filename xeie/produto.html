@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <meta name="theme-color" content="#1C1917" />
+
 </head>
 <body>
   <div class="announce-bar"><a href="pedido.html"><span data-i18n="announce">Envio para toda Luanda · Pedidos personalizados disponíveis</span></a></div>
@@ -20,25 +27,29 @@
         <button class="header-icon search-toggle" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg></button>
       </div>
     </div>
-    <nav class="desktop-nav">
-      <a href="index.html" class="nav-link" data-i18n="nav_home">Início</a>
-      <a href="produtos.html" class="nav-link" data-i18n="nav_products">Produtos</a>
-      <a href="como-funciona.html" class="nav-link" data-i18n="nav_how">Como Funciona</a>
-      <a href="pedido.html" class="nav-link" data-i18n="nav_request">Fazer Pedido</a>
-      <a href="sobre.html" class="nav-link" data-i18n="nav_about">Sobre</a>
-      <a href="contacto.html" class="nav-link" data-i18n="nav_contact">Contacto</a>
+        <nav class="desktop-nav">
+      <a href="produtos.html?cat=new" class="nav-link" data-i18n="nav_new">Novidades</a>
+      <a href="produtos.html?cat=bestsellers" class="nav-link" data-i18n="nav_bestsellers">Mais Vendidos</a>
+      <a href="produtos.html?cat=perfumes" class="nav-link" data-i18n="nav_perfumes">Perfumes</a>
+      <a href="produtos.html?cat=cosmetics" class="nav-link" data-i18n="nav_cosmetics">Cosméticos</a>
+      <a href="produtos.html?cat=jewellery" class="nav-link" data-i18n="nav_jewellery">Joias</a>
+      <a href="produtos.html?cat=sunglasses" class="nav-link" data-i18n="nav_sunglasses">Óculos de Sol</a>
+      <a href="produtos.html?cat=bags" class="nav-link" data-i18n="nav_bags">Pastas & Mochilas</a>
+      <a href="produtos.html?cat=sale" class="nav-link nav-sale" data-i18n="nav_sale">Sale</a>
     </nav>
   </header>
   <div class="drawer-overlay"></div>
   <aside class="drawer">
     <div class="drawer-header"><span class="drawer-brand">Xéie</span><button class="drawer-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
-    <nav class="drawer-nav">
-      <a href="index.html" data-i18n="nav_home">Início</a>
-      <a href="produtos.html" data-i18n="nav_products">Produtos</a>
-      <a href="como-funciona.html" data-i18n="nav_how">Como Funciona</a>
-      <a href="pedido.html" data-i18n="nav_request">Fazer Pedido</a>
-      <a href="sobre.html" data-i18n="nav_about">Sobre</a>
-      <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+        <nav class="drawer-nav">
+      <a href="produtos.html?cat=new" data-i18n="nav_new">Novidades</a>
+      <a href="produtos.html?cat=bestsellers" data-i18n="nav_bestsellers">Mais Vendidos</a>
+      <a href="produtos.html?cat=perfumes" data-i18n="nav_perfumes">Perfumes</a>
+      <a href="produtos.html?cat=cosmetics" data-i18n="nav_cosmetics">Cosméticos</a>
+      <a href="produtos.html?cat=jewellery" data-i18n="nav_jewellery">Joias</a>
+      <a href="produtos.html?cat=sunglasses" data-i18n="nav_sunglasses">Óculos de Sol</a>
+      <a href="produtos.html?cat=bags" data-i18n="nav_bags">Pastas & Mochilas</a>
+      <a href="produtos.html?cat=sale" data-i18n="nav_sale">Sale</a>
     </nav>
     <div class="drawer-footer"><p>xeieloja@gmail.com</p><p style="margin-top:0.4rem">Luanda, Angola</p></div>
   </aside>
