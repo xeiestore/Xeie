@@ -94,7 +94,12 @@ window.XEIE_I18N = {
     // Misc
     coming_soon: "Em breve",
     view_product: "Ver produto",
-    request_this: "Pedir este produto"
+    request_this: "Pedir este produto",
+    cta_eyebrow: "Em breve",
+    cta_title: "Novo produto a caminho",
+    cta_desc: "Estamos a preparar algo especial. Deixe o seu email e seja o primeiro a saber.",
+    cta_email_placeholder: "O seu email",
+    cta_btn: "Avisem-me"
   },
   en: {
     announce: "Delivery across Luanda · Custom requests available",
@@ -174,7 +179,12 @@ window.XEIE_I18N = {
     search_no_results: "No results found",
     coming_soon: "Coming soon",
     view_product: "View product",
-    request_this: "Request this product"
+    request_this: "Request this product",
+    cta_eyebrow: "Coming soon",
+    cta_title: "New product on the way",
+    cta_desc: "We're preparing something special. Leave your email and be the first to know.",
+    cta_email_placeholder: "Your email",
+    cta_btn: "Notify me"
   }
 };
 
