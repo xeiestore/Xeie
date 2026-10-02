@@ -1153,6 +1153,85 @@ button, input, textarea, select {
 }
 
 /* ============================================
+   CTA BAND — Future Product
+   ============================================ */
+.cta-band {
+  background: var(--color-text);
+  color: #FAFAF9;
+  padding: 4.5rem 1.25rem;
+  text-align: center;
+}
+
+.cta-band-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.cta-band-eyebrow {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 0.85rem;
+}
+
+.cta-band-title {
+  font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+  font-weight: var(--font-weight-light);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.cta-band-desc {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-light);
+  opacity: 0.7;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.cta-band-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+@media (min-width: 480px) {
+  .cta-band-form {
+    flex-direction: row;
+  }
+}
+
+.cta-band-input {
+  flex: 1;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(250,250,249,0.2);
+  border-radius: var(--radius-btn);
+  background: rgba(250,250,249,0.06);
+  color: #FAFAF9;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-light);
+  outline: none;
+  transition: border-color var(--duration) var(--ease);
+}
+
+.cta-band-input::placeholder {
+  color: rgba(250,250,249,0.4);
+}
+
+.cta-band-input:focus {
+  border-color: rgba(250,250,249,0.5);
+}
+
+.cta-band-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .site-footer {
