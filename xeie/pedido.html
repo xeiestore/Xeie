@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fazer Pedido — Xéie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="announce-bar">
+    <a href="pedido.html"><span data-i18n="announce">Envio para toda Luanda · Pedidos personalizados disponíveis</span></a>
+  </div>
+
+  <header class="site-header scrolled">
+    <div class="header-inner">
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <a href="index.html" class="brand">
+        <span class="brand-name">Xéie</span>
+        <span class="brand-tagline">Online Store · Luanda</span>
+      </a>
+      <div class="header-actions">
+        <button class="lang-toggle"><span data-lang="pt" class="active">PT</span><span>/</span><span data-lang="en">EN</span></button>
+        <button class="header-icon search-toggle" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="desktop-nav">
+      <a href="index.html" class="nav-link" data-i18n="nav_home">Início</a>
+      <a href="produtos.html" class="nav-link" data-i18n="nav_products">Produtos</a>
+      <a href="como-funciona.html" class="nav-link" data-i18n="nav_how">Como Funciona</a>
+      <a href="pedido.html" class="nav-link" data-i18n="nav_request">Fazer Pedido</a>
+      <a href="sobre.html" class="nav-link" data-i18n="nav_about">Sobre</a>
+      <a href="contacto.html" class="nav-link" data-i18n="nav_contact">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="drawer-overlay"></div>
+  <aside class="drawer">
+    <div class="drawer-header">
+      <span class="drawer-brand">Xéie</span>
+      <button class="drawer-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-i18n="nav_home">Início</a>
+      <a href="produtos.html" data-i18n="nav_products">Produtos</a>
+      <a href="como-funciona.html" data-i18n="nav_how">Como Funciona</a>
+      <a href="pedido.html" data-i18n="nav_request">Fazer Pedido</a>
+      <a href="sobre.html" data-i18n="nav_about">Sobre</a>
+      <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+    </nav>
+    <div class="drawer-footer"><p>xeieloja@gmail.com</p><p style="margin-top:0.4rem">Luanda, Angola</p></div>
+  </aside>
+
+  <div class="search-overlay">
+    <div class="search-header">
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+        <input type="search" class="search-input" data-i18n-placeholder="search_placeholder" placeholder="Pesquisar produtos e categorias..." />
+      </div>
+      <button class="search-close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="search-results"></div>
+  </div>
+
+  <section class="page-hero">
+    <h1 class="page-hero-title" data-i18n="request_title">Pedido personalizado</h1>
+    <p class="page-hero-desc" data-i18n="request_desc">Não encontrou o que procura? Descreva o produto e nós tratamos de tudo.</p>
+  </section>
+
+  <section class="section">
+    <div class="form-section">
+      <form id="pedido-form">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_name">Nome completo <span class="required">*</span></label>
+          <input type="text" name="nome" class="form-input" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_phone">Telefone / WhatsApp <span class="required">*</span></label>
+            <input type="tel" name="telefone" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_email">Email <span class="required">*</span></label>
+            <input type="email" name="email" class="form-input" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_product">Descrição do produto ou link <span class="required">*</span></label>
+          <textarea name="produto" class="form-textarea" required data-i18n-placeholder="form_product" placeholder="Descrição do produto ou link"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_qty">Quantidade <span class="required">*</span></label>
+            <input type="number" name="quantidade" class="form-input" min="1" value="1" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_budget">Orçamento máximo (opcional)</label>
+            <input type="text" name="orcamento" class="form-input" placeholder="Ex: 50.000 Kz" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_address">Morada <span class="required">*</span></label>
+          <input type="text" name="morada" class="form-input" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_municipio">Município <span class="required">*</span></label>
+            <input type="text" name="municipio" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form_provincia">Província <span class="required">*</span></label>
+            <input type="text" name="provincia" class="form-input" value="Luanda" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_notes">Observações</label>
+          <textarea name="observacoes" class="form-textarea" rows="3"></textarea>
+        </div>
+
+        <p class="form-note" data-i18n="form_note">Após o envio receberá um email com a referência bancária e o valor total.</p>
+
+        <button type="submit" class="btn btn-primary form-submit" data-i18n="form_submit">Enviar pedido</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Xéie</div>
+          <p class="footer-desc" data-i18n="footer_desc">Loja online de sourcing e entrega em Luanda. O que precisa, nós encontramos.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_explore">Explorar</h4>
+          <div class="footer-links">
+            <a href="produtos.html" data-i18n="nav_products">Produtos</a>
+            <a href="pedido.html" data-i18n="nav_request">Fazer Pedido</a>
+            <a href="como-funciona.html" data-i18n="nav_how">Como Funciona</a>
+            <a href="sobre.html" data-i18n="nav_about">Sobre</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_support">Suporte</h4>
+          <div class="footer-links">
+            <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+            <a href="mailto:xeieloja@gmail.com">xeieloja@gmail.com</a>
+            <a href="https://www.instagram.com/xeie_store/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61595218191453" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer_rights">© 2026 Xéie. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/xeie_store/" target="_blank" rel="noopener" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61595218191453" target="_blank" rel="noopener" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

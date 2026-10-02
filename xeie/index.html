@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xéie — Online Shopping · Luanda, Angola</title>
+  <meta name="description" content="Xéie — Loja online de sourcing e entrega em Luanda. O que precisa, nós encontramos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    <a href="pedido.html"><span data-i18n="announce">Envio para toda Luanda · Pedidos personalizados disponíveis</span></a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="index.html" class="brand">
+        <span class="brand-name">Xéie</span>
+        <span class="brand-tagline">Online Store · Luanda</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="lang-toggle" aria-label="Language">
+          <span data-lang="pt" class="active">PT</span>
+          <span>/</span>
+          <span data-lang="en">EN</span>
+        </button>
+        <button class="header-icon search-toggle" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop nav (positioned absolutely under brand) -->
+    <nav class="desktop-nav">
+      <a href="index.html" class="nav-link" data-i18n="nav_home">Início</a>
+      <a href="produtos.html" class="nav-link" data-i18n="nav_products">Produtos</a>
+      <a href="como-funciona.html" class="nav-link" data-i18n="nav_how">Como Funciona</a>
+      <a href="pedido.html" class="nav-link" data-i18n="nav_request">Fazer Pedido</a>
+      <a href="sobre.html" class="nav-link" data-i18n="nav_about">Sobre</a>
+      <a href="contacto.html" class="nav-link" data-i18n="nav_contact">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay"></div>
+  <aside class="drawer">
+    <div class="drawer-header">
+      <span class="drawer-brand">Xéie</span>
+      <button class="drawer-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-i18n="nav_home">Início</a>
+      <a href="produtos.html" data-i18n="nav_products">Produtos</a>
+      <a href="como-funciona.html" data-i18n="nav_how">Como Funciona</a>
+      <a href="pedido.html" data-i18n="nav_request">Fazer Pedido</a>
+      <a href="sobre.html" data-i18n="nav_about">Sobre</a>
+      <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+    </nav>
+    <div class="drawer-footer">
+      <p>xeieloja@gmail.com</p>
+      <p style="margin-top:0.4rem">Luanda, Angola</p>
+    </div>
+  </aside>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay">
+    <div class="search-header">
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+        <input type="search" class="search-input" data-i18n-placeholder="search_placeholder" placeholder="Pesquisar produtos e categorias..." />
+      </div>
+      <button class="search-close" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="search-results"></div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Luanda · Angola</p>
+      <h1 class="hero-title" data-i18n="hero_title">O que precisa, nós encontramos.</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">Peça qualquer produto. Receba a referência bancária por email. Nós tratamos do resto.</p>
+      <div class="hero-actions">
+        <a href="produtos.html" class="btn btn-primary" data-i18n="hero_cta_primary">Ver produtos</a>
+        <a href="pedido.html" class="btn btn-secondary" data-i18n="hero_cta_secondary">Pedido personalizado</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow" data-i18n="cat_title">Categorias</p>
+        <h2 class="section-title" data-i18n="cat_title">Categorias</h2>
+        <p class="section-desc" data-i18n="cat_desc">Explore as categorias principais. Mais produtos em breve.</p>
+      </div>
+
+      <div class="categories-grid">
+        <a href="produtos.html?cat=electronica" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_electronics">Electrónica</h3>
+            <p class="category-card-count">12 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=moda" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_fashion">Moda & Acessórios</h3>
+            <p class="category-card-count">18 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=casa" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_home">Casa & Decoração</h3>
+            <p class="category-card-count">15 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=beleza" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_beauty">Beleza & Cuidados</h3>
+            <p class="category-card-count">10 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=bebe" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/><path d="M12 12v10M8 16h8"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_baby">Bebé & Criança</h3>
+            <p class="category-card-count">9 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=desporto" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_sports">Desporto & Outdoor</h3>
+            <p class="category-card-count">11 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=gourmet" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_gourmet">Gourmet & Bebidas</h3>
+            <p class="category-card-count">8 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+
+        <a href="produtos.html?cat=auto" class="category-card">
+          <div class="category-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title" data-i18n="cat_auto">Automóvel</h3>
+            <p class="category-card-count">7 <span data-i18n="cat_count">produtos</span></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section" style="background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow" data-i18n="products_title">Produtos em destaque</p>
+        <h2 class="section-title" data-i18n="products_title">Produtos em destaque</h2>
+        <p class="section-desc" data-i18n="products_desc">Seleção de artigos disponíveis. Imagens e stock a ser actualizados em breve.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <a href="produto.html?id=1" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+            <span class="product-card-badge" data-i18n="coming_soon">Em breve</span>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Electrónica</p>
+            <h3 class="product-card-title">Smartphone Premium 128GB</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 185.000 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 2 -->
+        <a href="produto.html?id=2" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Electrónica</p>
+            <h3 class="product-card-title">Auscultadores Bluetooth Noise Cancelling</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 42.500 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 3 -->
+        <a href="produto.html?id=3" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="7"/><polyline points="12 9 12 12 13.5 13.5"/><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Electrónica</p>
+            <h3 class="product-card-title">Smartwatch Desportivo</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 28.900 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 4 -->
+        <a href="produto.html?id=4" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Moda & Acessórios</p>
+            <h3 class="product-card-title">Sapatilhas Running Unissexo</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 22.000 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 5 -->
+        <a href="produto.html?id=7" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Casa & Decoração</p>
+            <h3 class="product-card-title">Conjunto de Panelas Antiaderentes</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 35.000 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 6 -->
+        <a href="produto.html?id=9" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Beleza & Cuidados</p>
+            <h3 class="product-card-title">Kit Skincare Completo</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 18.500 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 7 -->
+        <a href="produto.html?id=13" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Desporto & Outdoor</p>
+            <h3 class="product-card-title">Bicicleta Estática Dobrável</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 65.000 Kz</p>
+          </div>
+        </a>
+
+        <!-- Product 8 -->
+        <a href="produto.html?id=15" class="product-card">
+          <div class="product-card-img">
+            <div class="img-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M8 22h8M12 11v11M12 11c-2.5 0-4-1.8-4-4V2h8v5c0 2.2-1.5 4-4 4z"/></svg>
+              <span data-i18n="product_placeholder">Imagem em breve</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <p class="product-card-category">Gourmet & Bebidas</p>
+            <h3 class="product-card-title">Vinho Tinto Reserva 750ml</h3>
+            <p class="product-card-price"><span class="from" data-i18n="product_from">desde</span> 12.800 Kz</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="produtos.html" class="btn btn-outline" data-i18n="products_view_all">Ver todos os produtos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works teaser -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow" data-i18n="how_title">Como funciona</p>
+        <h2 class="section-title" data-i18n="how_title">Como funciona</h2>
+        <p class="section-desc" data-i18n="how_desc">Simples, transparente e seguro.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3 class="step-title" data-i18n="how_step1_title">1. Faça o pedido</h3>
+          <p class="step-desc" data-i18n="how_step1_desc">Escolha um produto listado ou descreva o que precisa no formulário de pedido personalizado.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3 class="step-title" data-i18n="how_step2_title">2. Receba a referência</h3>
+          <p class="step-desc" data-i18n="how_step2_desc">Enviamos um email com o valor exacto e a referência bancária para pagamento.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3 class="step-title" data-i18n="how_step3_title">3. Receba o produto</h3>
+          <p class="step-desc" data-i18n="how_step3_desc">Após confirmação do pagamento, entregamos em Luanda dentro do prazo combinado.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="como-funciona.html" class="btn btn-dark" data-i18n="nav_how">Como Funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Xéie</div>
+          <p class="footer-desc" data-i18n="footer_desc">Loja online de sourcing e entrega em Luanda. O que precisa, nós encontramos.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_explore">Explorar</h4>
+          <div class="footer-links">
+            <a href="produtos.html" data-i18n="nav_products">Produtos</a>
+            <a href="pedido.html" data-i18n="nav_request">Fazer Pedido</a>
+            <a href="como-funciona.html" data-i18n="nav_how">Como Funciona</a>
+            <a href="sobre.html" data-i18n="nav_about">Sobre</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_support">Suporte</h4>
+          <div class="footer-links">
+            <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+            <a href="mailto:xeieloja@gmail.com">xeieloja@gmail.com</a>
+            <a href="https://www.instagram.com/xeie_store/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61595218191453" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer_rights">© 2026 Xéie. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/xeie_store/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61595218191453" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
