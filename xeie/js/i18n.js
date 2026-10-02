@@ -14,7 +14,7 @@ window.XEIE_I18N = {
     nav_jewellery: "Joias",
     nav_sunglasses: "Óculos de Sol",
     nav_bags: "Pastas & Mochilas",
-    nav_sale: "Sale",
+    nav_sale: "Promoção",
     // Nav (footer / old)
     nav_home: "Início",
     nav_products: "Produtos",

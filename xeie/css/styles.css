@@ -342,7 +342,7 @@ button, input, textarea, select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     position: absolute;
     bottom: 1rem;
     left: 0;
@@ -379,6 +379,15 @@ button, input, textarea, select {
   .nav-link:hover::after,
   .nav-link.active::after {
     width: 100%;
+  }
+
+  .nav-link.nav-sale {
+    color: #FDBA74;
+    opacity: 1;
+  }
+
+  .site-header.scrolled .nav-link.nav-sale {
+    color: var(--color-accent);
   }
 }
 
@@ -671,6 +680,25 @@ button, input, textarea, select {
   flex-wrap: wrap;
   gap: 0.85rem;
   justify-content: center;
+}
+
+/* Logo-only hero */
+.hero.hero-logo-only {
+  min-height: 70vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 7.5rem 1.5rem 3.5rem;
+}
+
+.hero.hero-logo-only::before {
+  display: none;
+}
+
+.hero-logo {
+  width: min(420px, 85vw);
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* ============================================

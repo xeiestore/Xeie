@@ -21,18 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Announcement bar + Header scroll ----------
   let lastScroll = 0;
   const announceHeight = 36;
-  const hasHero = !!document.querySelector('.hero');
+  const heroEl = document.querySelector('.hero');
+  const hasDarkHero = heroEl && !heroEl.classList.contains('hero-logo-only');
 
-  // On pages without a hero, keep header solid from the start
-  if (!hasHero) {
+  // On pages without a dark hero, keep header solid from the start
+  if (!hasDarkHero) {
     siteHeader?.classList.add('scrolled');
   }
 
   function handleScroll() {
     const scrollY = window.scrollY;
 
-    // Header solid state — only toggle on pages that have a hero
-    if (hasHero) {
+    // Header solid state — only toggle on pages with a dark hero
+    if (hasDarkHero) {
       if (scrollY > 40) {
         siteHeader?.classList.add('scrolled');
       } else {
