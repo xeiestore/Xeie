@@ -389,6 +389,98 @@ button, input, textarea, select {
   .site-header.scrolled .nav-link.nav-sale {
     color: var(--color-accent);
   }
+
+  /* Mega menu triggers */
+  .nav-item.has-mega {
+    position: static;
+  }
+
+  .mega-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+  }
+
+  .mega-trigger.open {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   MEGA MENU (Desktop — full width, Kylie style)
+   ============================================ */
+.mega-menu {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(var(--announce-height) + 108px);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  z-index: 999;
+  padding: 2.5rem 2rem 3rem;
+}
+
+.site-header.scrolled ~ .mega-menu,
+.mega-menu.open-under-scrolled {
+  top: 108px;
+}
+
+.mega-menu.open {
+  display: block;
+}
+
+.mega-menu-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.75rem 1.5rem;
+}
+
+.mega-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.mega-item:hover {
+  opacity: 0.85;
+}
+
+.mega-item-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(145deg, #F5F5F4 0%, #E7E5E4 100%);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+}
+
+.mega-item-label {
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+/* Hide mega menus on mobile */
+@media (max-width: 899px) {
+  .mega-menu {
+    display: none !important;
+  }
 }
 
 /* ============================================
@@ -434,7 +526,7 @@ button, input, textarea, select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .drawer-brand {
@@ -463,26 +555,85 @@ button, input, textarea, select {
   stroke-width: 1.5;
 }
 
-.drawer-nav {
+/* Drawer top links (Novidades, Mais Vendidos, Promoção) */
+.drawer-top-links {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
+  gap: 0.15rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.drawer-nav a {
+.drawer-top-links a {
   display: block;
-  padding: 0.85rem 0;
+  padding: 0.7rem 0;
   font-size: 0.78rem;
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text);
-  border-bottom: 1px solid transparent;
-  transition: color var(--duration) var(--ease);
 }
 
-.drawer-nav a:hover {
+.drawer-top-links a:hover {
+  color: var(--color-accent);
+}
+
+/* Zara-style tabs */
+.drawer-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.drawer-tab {
+  flex: 1;
+  padding: 0.85rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -1px;
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.drawer-tab.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+.drawer-tab-panels {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.drawer-tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.drawer-tab-panel.active {
+  display: flex;
+}
+
+.drawer-tab-panel a {
+  display: block;
+  padding: 0.8rem 0;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.drawer-tab-panel a:hover {
   color: var(--color-accent);
 }
 
@@ -491,6 +642,7 @@ button, input, textarea, select {
   border-top: 1px solid var(--color-border);
   font-size: 0.75rem;
   color: var(--color-text-muted);
+  margin-top: auto;
 }
 
 .drawer-footer a {

@@ -75,9 +75,66 @@ document.addEventListener('DOMContentLoaded', () => {
   drawerClose?.addEventListener('click', closeDrawer);
   drawerOverlay?.addEventListener('click', closeDrawer);
 
-  // Close drawer on link click
-  document.querySelectorAll('.drawer-nav a').forEach(link => {
+  // Close drawer on any link click inside it
+  drawer?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeDrawer);
+  });
+
+  // ---------- Drawer tabs (Mulher | Homem) ----------
+  const drawerTabs = document.querySelectorAll('.drawer-tab');
+  const drawerPanels = document.querySelectorAll('.drawer-tab-panel');
+
+  drawerTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      drawerTabs.forEach(t => t.classList.remove('active'));
+      drawerPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.drawer-tab-panel[data-panel="${target}"]`)?.classList.add('active');
+    });
+  });
+
+  // ---------- Desktop Mega Menus ----------
+  const megaTriggers = document.querySelectorAll('.mega-trigger');
+  const megaPanels = document.querySelectorAll('.mega-menu');
+
+  function closeAllMegas() {
+    megaTriggers.forEach(t => t.classList.remove('open'));
+    megaPanels.forEach(p => p.classList.remove('open'));
+  }
+
+  megaTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = trigger.dataset.mega;
+      const panel = document.querySelector(`.mega-menu[data-mega-panel="${id}"]`);
+      const isOpen = panel?.classList.contains('open');
+
+      closeAllMegas();
+
+      if (!isOpen && panel) {
+        trigger.classList.add('open');
+        panel.classList.add('open');
+        // Adjust top if header is scrolled
+        if (siteHeader?.classList.contains('scrolled')) {
+          panel.style.top = siteHeader.offsetHeight + 'px';
+        } else {
+          panel.style.top = (siteHeader.offsetHeight + (announceBar?.classList.contains('hidden') ? 0 : 36)) + 'px';
+        }
+      }
+    });
+  });
+
+  // Close mega on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.mega-menu') && !e.target.closest('.mega-trigger')) {
+      closeAllMegas();
+    }
+  });
+
+  // Close mega on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllMegas();
   });
 
   // ---------- Search Overlay ----------

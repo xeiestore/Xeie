@@ -49,16 +49,68 @@
     </div>
 
     <!-- Desktop nav (positioned absolutely under brand) -->
-            <nav class="desktop-nav">
+                <nav class="desktop-nav">
       <a href="novidades.html" class="nav-link" data-i18n="nav_new">Novidades</a>
       <a href="mais-vendidos.html" class="nav-link" data-i18n="nav_bestsellers">Mais Vendidos</a>
-      <a href="perfumes.html" class="nav-link" data-i18n="nav_perfumes">Perfumes</a>
-      <a href="cosmeticos.html" class="nav-link" data-i18n="nav_cosmetics">Cosméticos</a>
-      <a href="joias.html" class="nav-link" data-i18n="nav_jewellery">Joias</a>
-      <a href="oculos-de-sol.html" class="nav-link" data-i18n="nav_sunglasses">Óculos de Sol</a>
-      <a href="pastas-mochilas.html" class="nav-link" data-i18n="nav_bags">Pastas & Mochilas</a>
+
+      <div class="nav-item has-mega">
+        <button type="button" class="nav-link mega-trigger" data-mega="mulher" data-i18n="nav_women">Mulher</button>
+      </div>
+      <div class="nav-item has-mega">
+        <button type="button" class="nav-link mega-trigger" data-mega="homem" data-i18n="nav_men">Homem</button>
+      </div>
+
       <a href="promocao.html" class="nav-link nav-sale" data-i18n="nav_sale">Promoção</a>
     </nav>
+
+    <!-- Mega Menu: Mulher -->
+    <div class="mega-menu" id="mega-mulher" data-mega-panel="mulher">
+      <div class="mega-menu-inner">
+        <a href="perfumes.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_perfumes">Perfumes</span>
+        </a>
+        <a href="cosmeticos.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_cosmetics">Cosméticos</span>
+        </a>
+        <a href="joias.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_jewellery">Joias</span>
+        </a>
+        <a href="produtos.html?cat=acessorios-mulher" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_accessories">Acessórios</span>
+        </a>
+        <a href="pastas-mochilas.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_bags_women">Bolsas</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mega Menu: Homem -->
+    <div class="mega-menu" id="mega-homem" data-mega-panel="homem">
+      <div class="mega-menu-inner">
+        <a href="perfumes.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_perfumes">Perfumes</span>
+        </a>
+        <a href="joias.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_jewellery">Joias</span>
+        </a>
+        <a href="produtos.html?cat=acessorios-homem" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_accessories">Acessórios</span>
+        </a>
+        <a href="pastas-mochilas.html" class="mega-item">
+          <div class="mega-item-img"><span data-i18n="product_placeholder">Imagem em breve</span></div>
+          <span class="mega-item-label" data-i18n="nav_bags">Pastas & Mochila</span>
+        </a>
+      </div>
+    </div>
+
   </header>
 
   <!-- Mobile Drawer -->
@@ -70,16 +122,34 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
-            <nav class="drawer-nav">
+
+    <div class="drawer-top-links">
       <a href="novidades.html" data-i18n="nav_new">Novidades</a>
       <a href="mais-vendidos.html" data-i18n="nav_bestsellers">Mais Vendidos</a>
-      <a href="perfumes.html" data-i18n="nav_perfumes">Perfumes</a>
-      <a href="cosmeticos.html" data-i18n="nav_cosmetics">Cosméticos</a>
-      <a href="joias.html" data-i18n="nav_jewellery">Joias</a>
-      <a href="oculos-de-sol.html" data-i18n="nav_sunglasses">Óculos de Sol</a>
-      <a href="pastas-mochilas.html" data-i18n="nav_bags">Pastas & Mochilas</a>
       <a href="promocao.html" data-i18n="nav_sale">Promoção</a>
-    </nav>
+    </div>
+
+    <div class="drawer-tabs">
+      <button type="button" class="drawer-tab active" data-tab="mulher" data-i18n="nav_women">Mulher</button>
+      <button type="button" class="drawer-tab" data-tab="homem" data-i18n="nav_men">Homem</button>
+    </div>
+
+    <div class="drawer-tab-panels">
+      <div class="drawer-tab-panel active" data-panel="mulher">
+        <a href="perfumes.html" data-i18n="nav_perfumes">Perfumes</a>
+        <a href="cosmeticos.html" data-i18n="nav_cosmetics">Cosméticos</a>
+        <a href="joias.html" data-i18n="nav_jewellery">Joias</a>
+        <a href="produtos.html?cat=acessorios-mulher" data-i18n="nav_accessories">Acessórios</a>
+        <a href="pastas-mochilas.html" data-i18n="nav_bags_women">Bolsas</a>
+      </div>
+      <div class="drawer-tab-panel" data-panel="homem">
+        <a href="perfumes.html" data-i18n="nav_perfumes">Perfumes</a>
+        <a href="joias.html" data-i18n="nav_jewellery">Joias</a>
+        <a href="produtos.html?cat=acessorios-homem" data-i18n="nav_accessories">Acessórios</a>
+        <a href="pastas-mochilas.html" data-i18n="nav_bags">Pastas & Mochila</a>
+      </div>
+    </div>
+
     <div class="drawer-footer">
       <p>xeieloja@gmail.com</p>
       <p style="margin-top:0.4rem">Luanda, Angola</p>
