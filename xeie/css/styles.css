@@ -297,7 +297,7 @@ button, input, textarea, select {
 /* ========== DESKTOP (≥900px) ========== */
 @media (min-width: 900px) {
   .site-header {
-    height: 108px;
+    height: 120px;
   }
 
   .header-inner {
@@ -314,7 +314,7 @@ button, input, textarea, select {
   /* Brand centered at top — larger like Kylie style */
   .brand {
     position: absolute;
-    top: 1.15rem;
+    top: 1.1rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -333,18 +333,18 @@ button, input, textarea, select {
   /* Actions top-right */
   .header-actions {
     position: absolute;
-    top: 1.25rem;
+    top: 1.2rem;
     right: 2.5rem;
   }
 
-  /* Desktop navigation centered below brand */
+  /* Desktop navigation centered below brand — more space from brand */
   .desktop-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     position: absolute;
-    bottom: 1rem;
+    bottom: 1.15rem;
     left: 0;
     right: 0;
   }
@@ -416,7 +416,7 @@ button, input, textarea, select {
   position: fixed;
   left: 0;
   right: 0;
-  top: calc(var(--announce-height) + 108px);
+  top: calc(var(--announce-height) + 120px);
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 12px 40px rgba(0,0,0,0.06);
@@ -426,7 +426,7 @@ button, input, textarea, select {
 
 .site-header.scrolled ~ .mega-menu,
 .mega-menu.open-under-scrolled {
-  top: 108px;
+  top: 120px;
 }
 
 .mega-menu.open {
@@ -505,8 +505,8 @@ button, input, textarea, select {
   position: fixed;
   top: 0;
   left: 0;
-  width: 85%;
-  max-width: 320px;
+  width: 100%;
+  max-width: none;
   height: 100%;
   background: var(--color-surface);
   z-index: 1101;
@@ -514,8 +514,8 @@ button, input, textarea, select {
   transition: transform var(--duration) var(--ease);
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.25rem;
-  border-right: 1px solid var(--color-border);
+  padding: 1.5rem 1.5rem;
+  border-right: none;
 }
 
 .drawer.open {
@@ -834,21 +834,37 @@ button, input, textarea, select {
   justify-content: center;
 }
 
-/* Logo-only hero */
+/* Logo-only hero — full bleed */
 .hero.hero-logo-only {
-  min-height: 70vh;
-  background: var(--color-bg);
+  min-height: 100vh;
+  background: #FFFFFF;
   color: var(--color-text);
-  padding: 7.5rem 1.5rem 3.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero.hero-logo-only::before {
   display: none;
 }
 
+.hero.hero-logo-only .hero-content {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 0 2rem;
+}
+
 .hero-logo {
-  width: min(420px, 85vw);
+  width: 100%;
+  max-width: 100%;
   height: auto;
+  max-height: 85vh;
+  object-fit: contain;
   display: block;
   margin: 0 auto;
 }

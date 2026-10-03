@@ -94,45 +94,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Desktop Mega Menus ----------
+  // ---------- Desktop Mega Menus (hover) ----------
   const megaTriggers = document.querySelectorAll('.mega-trigger');
   const megaPanels = document.querySelectorAll('.mega-menu');
+  let megaCloseTimer = null;
+
+  function positionMega(panel) {
+    if (!panel || !siteHeader) return;
+    if (siteHeader.classList.contains('scrolled')) {
+      panel.style.top = siteHeader.offsetHeight + 'px';
+    } else {
+      const announceH = announceBar?.classList.contains('hidden') ? 0 : 36;
+      panel.style.top = (siteHeader.offsetHeight + announceH) + 'px';
+    }
+  }
 
   function closeAllMegas() {
     megaTriggers.forEach(t => t.classList.remove('open'));
     megaPanels.forEach(p => p.classList.remove('open'));
   }
 
+  function openMega(id) {
+    closeAllMegas();
+    const trigger = document.querySelector(`.mega-trigger[data-mega="${id}"]`);
+    const panel = document.querySelector(`.mega-menu[data-mega-panel="${id}"]`);
+    if (trigger && panel) {
+      trigger.classList.add('open');
+      panel.classList.add('open');
+      positionMega(panel);
+    }
+  }
+
   megaTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const id = trigger.dataset.mega;
-      const panel = document.querySelector(`.mega-menu[data-mega-panel="${id}"]`);
-      const isOpen = panel?.classList.contains('open');
+    const id = trigger.dataset.mega;
+    const panel = document.querySelector(`.mega-menu[data-mega-panel="${id}"]`);
 
-      closeAllMegas();
-
-      if (!isOpen && panel) {
-        trigger.classList.add('open');
-        panel.classList.add('open');
-        // Adjust top if header is scrolled
-        if (siteHeader?.classList.contains('scrolled')) {
-          panel.style.top = siteHeader.offsetHeight + 'px';
-        } else {
-          panel.style.top = (siteHeader.offsetHeight + (announceBar?.classList.contains('hidden') ? 0 : 36)) + 'px';
-        }
-      }
+    trigger.addEventListener('mouseenter', () => {
+      clearTimeout(megaCloseTimer);
+      openMega(id);
     });
-  });
 
-  // Close mega on outside click
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.mega-menu') && !e.target.closest('.mega-trigger')) {
-      closeAllMegas();
+    trigger.addEventListener('mouseleave', () => {
+      megaCloseTimer = setTimeout(closeAllMegas, 180);
+    });
+
+    if (panel) {
+      panel.addEventListener('mouseenter', () => clearTimeout(megaCloseTimer));
+      panel.addEventListener('mouseleave', () => {
+        megaCloseTimer = setTimeout(closeAllMegas, 180);
+      });
     }
   });
 
-  // Close mega on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAllMegas();
   });
