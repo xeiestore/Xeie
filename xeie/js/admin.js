@@ -100,13 +100,13 @@
     mediaLibrary = loadJSON(LS.media, []);
   }
 
-  function saveDraft() {
+  function saveDraft(silent = false) {
     saveJSON(LS.products, products);
     saveJSON(LS.zones, zones);
     saveJSON(LS.texts, texts);
     saveJSON(LS.images, images);
     saveJSON(LS.media, mediaLibrary);
-    toast("Rascunho guardado neste dispositivo");
+    if (!silent) toast("Rascunho guardado neste dispositivo");
   }
 
   function renderAll() {
@@ -343,8 +343,8 @@
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Falha na publicação");
-      toast("Publicado com sucesso!");
-      saveDraft();
+      saveDraft(true); // keep local draft in sync without overwriting toast
+      toast("Publicado com sucesso!", 4000);
     } catch (e) {
       console.error(e);
       toast("Erro ao publicar: " + e.message);
