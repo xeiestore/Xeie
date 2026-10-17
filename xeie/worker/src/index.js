@@ -44,7 +44,7 @@ async function sha1(message) {
 
 /**
  * Signed raw upload of catalog.json to Cloudinary
- * public_id fixed → xeie/catalog (overwrites on each publish)
+ * Final path: xeie/catalog (overwrites on each publish)
  */
 async function publishCatalog(catalog, env) {
   const cloud = env.CLOUDINARY_CLOUD_NAME;
@@ -56,12 +56,15 @@ async function publishCatalog(catalog, env) {
   }
 
   const timestamp = Math.floor(Date.now() / 1000);
-  const publicId = "xeie/catalog";
+  // Final asset path on Cloudinary: xeie/catalog
+  const publicId = "catalog";
   const folder = "xeie";
 
-  // Cloudinary signature for raw upload
-  // params that must be signed (alphabetical, exclude file & cloud_name)
-  const toSign = `folder=${folder}&public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
+  // Cloudinary signature: all params except file, api_key, resource_type, signature
+  // must be sorted alphabetically and appended with the API secret
+  const toSign =
+    `folder=${folder}&invalidate=true&overwrite=true&public_id=${publicId}&timestamp=${timestamp}` +
+    apiSecret;
   const signature = await sha1(toSign);
 
   const form = new FormData();
