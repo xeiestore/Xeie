@@ -266,8 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Form submission → Xéie API Worker (orders) ----------
   const pedidoForm = document.getElementById('pedido-form');
   if (pedidoForm) {
-    // Change this URL after you deploy the Worker
-    const ORDERS_URL = 'https://xeie-api.YOUR_SUBDOMAIN.workers.dev/orders';
+    const ORDERS_URL = 'https://xeie-api.xeieloja.workers.dev/orders';
 
     pedidoForm.addEventListener('submit', async (e) => {
       e.preventDefault();
