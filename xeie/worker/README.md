@@ -3,53 +3,76 @@
 Cloudflare Worker that powers:
 
 - **Publish** – signed upload of `catalog.json` to Cloudinary (admin only)
-- **Orders** – store customer orders in KV + optional email to `xeieloja@gmail.com`
+- **Orders** – store customer orders in KV (+ optional email)
 
-## One-time setup
+**Live URL:** https://xeie-api.xeieloja.workers.dev  
+
+---
+
+## Endpoints
+
+| Method | Path       | Auth              | Description                       |
+|--------|------------|-------------------|-----------------------------------|
+| POST   | /publish   | X-Admin-Password  | Upload catalog.json to Cloudinary |
+| POST   | /orders    | none              | Store a new customer order        |
+| GET    | /orders    | X-Admin-Password  | List recent orders                |
+| GET    | /health    | none              | Health check                      |
+
+---
+
+## One-time setup (already done on xeieloja account)
 
 ```bash
 cd worker
 
-# 1. Create KV namespace for orders
+# KV
 npx wrangler kv namespace create ORDERS
 npx wrangler kv namespace create ORDERS --preview
+# → put id + preview_id into wrangler.toml
 
-# Copy the two IDs into wrangler.toml (id + preview_id)
-
-# 2. Deploy
+# Deploy
 npx wrangler deploy
 
-# 3. Set secrets (never commit these)
-npx wrangler secret put ADMIN_PASSWORD          # value: XNgola1648
-npx wrangler secret put CLOUDINARY_CLOUD_NAME   # value: efvlvhce
-npx wrangler secret put CLOUDINARY_API_KEY      # value: 452233115926395
-npx wrangler secret put CLOUDINARY_API_SECRET   # value: Y6HVhXd3AytMJESSj7iMznZa-yQ
+# Secrets
+npx wrangler secret put ADMIN_PASSWORD
+npx wrangler secret put CLOUDINARY_CLOUD_NAME
+npx wrangler secret put CLOUDINARY_API_KEY
+npx wrangler secret put CLOUDINARY_API_SECRET
 
-# Optional – email notifications (Resend free tier)
+# Optional – email notifications
 # npx wrangler secret put RESEND_API_KEY
 ```
 
-After deploy the Worker URL will be something like:
+Current KV IDs are in `wrangler.toml`. Secrets are set on the **xeieloja** Cloudflare account (not educationgola).
 
-```
-https://xeie-api.<your-subdomain>.workers.dev
-```
+---
 
-Put that URL into `js/admin.js` as `PUBLISH_URL` / `ORDERS_URL`.
+## Catalog on Cloudinary
 
-## Endpoints
-
-| Method | Path       | Auth              | Description                          |
-|--------|------------|-------------------|--------------------------------------|
-| POST   | /publish   | X-Admin-Password  | Upload catalog.json to Cloudinary    |
-| POST   | /orders    | none              | Store a new customer order           |
-| GET    | /orders    | X-Admin-Password  | List recent orders                   |
-| GET    | /health    | none              | Health check                         |
-
-## Catalog URL (public)
+After a successful publish:
 
 ```
 https://res.cloudinary.com/efvlvhce/raw/upload/xeie/catalog.json
 ```
 
-(append `?t=` + Date.now() for cache-busting on the public site)
+Signed upload uses `folder=xeie`, `public_id=catalog`, `overwrite=true`, `invalidate=true`.
+
+---
+
+## Local / redeploy
+
+```bash
+cd worker
+git pull
+npx wrangler deploy
+```
+
+After code changes to `src/index.js`, always redeploy the Worker (Pages deploy does **not** update the Worker).
+
+---
+
+## Frontend wiring
+
+- `js/admin.js` → `PUBLISH_URL` / `ORDERS_URL` → `https://xeie-api.xeieloja.workers.dev/...`
+- `js/main.js` → pedido form → same `/orders`
+- `js/app.js` → public product grids from catalog.json
