@@ -263,9 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Form submission (Cloudflare Workers ready) ----------
+  // ---------- Form submission → Xéie API Worker (orders) ----------
   const pedidoForm = document.getElementById('pedido-form');
   if (pedidoForm) {
+    // Change this URL after you deploy the Worker
+    const ORDERS_URL = 'https://xeie-api.YOUR_SUBDOMAIN.workers.dev/orders';
+
     pedidoForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = pedidoForm.querySelector('[type="submit"]');
@@ -277,24 +280,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = Object.fromEntries(formData.entries());
 
       try {
-        // Cloudflare Worker endpoint — change to your worker URL
-        const response = await fetch('/api/pedido', {
+        const response = await fetch(ORDERS_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.ok) {
           pedidoForm.reset();
           alert(document.documentElement.lang === 'pt'
             ? 'Pedido enviado com sucesso! Receberá um email com a referência bancária em breve.'
             : 'Request sent successfully! You will receive an email with the bank reference shortly.');
         } else {
-          throw new Error('Server error');
+          throw new Error(result.error || 'Server error');
         }
       } catch (err) {
-        // Fallback for development
-        console.log('Form data:', data);
+        console.log('Form data:', data, err);
         alert(document.documentElement.lang === 'pt'
           ? 'Pedido registado (modo de teste). Em produção será enviado via Cloudflare Worker.'
           : 'Request recorded (test mode). In production it will be sent via Cloudflare Worker.');
