@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Xéie Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#1C1917" />
+</head>
+<body>
+
+  <!-- ========== LOGIN ========== -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <h1>Xéie Admin</h1>
+      <p>Painel de gestão da loja</p>
+      <form id="login-form">
+        <input type="password" id="login-password" class="form-input" placeholder="Password" required autocomplete="current-password" />
+        <p class="login-error" id="login-error">Password incorrecta</p>
+        <label style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#78716C;margin-bottom:16px;">
+          <input type="checkbox" id="login-remember" /> Manter sessão neste dispositivo
+        </label>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== ADMIN SHELL ========== -->
+  <div class="admin-shell" id="admin-shell">
+    <header class="admin-header">
+      <div class="brand">Xéie <span>Admin</span></div>
+      <button class="btn-logout" id="btn-logout">Sair</button>
+    </header>
+
+    <nav class="admin-nav">
+      <button data-panel="dashboard" class="active">Dashboard</button>
+      <button data-panel="products">Produtos</button>
+      <button data-panel="zones">Zonas</button>
+      <button data-panel="texts">Textos</button>
+      <button data-panel="images">Imagens do site</button>
+      <button data-panel="media">Média</button>
+      <button data-panel="orders">Pedidos</button>
+    </nav>
+
+    <main class="admin-main">
+
+      <!-- Dashboard -->
+      <section class="panel active" id="panel-dashboard">
+        <h2>Dashboard</h2>
+        <p class="panel-desc">Resumo rápido + guia de utilização</p>
+        <div class="stats-row">
+          <div class="stat-card"><p class="num" id="stat-products">0</p><p class="label">Produtos activos</p></div>
+          <div class="stat-card"><p class="num" id="stat-zones">0</p><p class="label">Zonas de entrega</p></div>
+          <div class="stat-card"><p class="num" id="stat-media">0</p><p class="label">Imagens na média</p></div>
+          <div class="stat-card"><p class="num" id="stat-orders">—</p><p class="label">Pedidos</p></div>
+        </div>
+        <div class="guide">
+          <h3>Como funciona</h3>
+          <ul>
+            <li><strong>Guardar rascunho</strong> — grava neste telemóvel/computador apenas. Pode pré-visualizar a loja no mesmo browser.</li>
+            <li><strong>Publicar na loja</strong> — envia produtos, zonas, textos e imagens para todos os visitantes (via Cloudinary).</li>
+            <li>Carregue fotos em <strong>Média</strong>, depois atribua-as aos produtos ou aos slots do site.</li>
+            <li>Os pedidos dos clientes aparecem no separador <strong>Pedidos</strong>.</li>
+            <li>Se algo falhar → contacte o programador.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="panel" id="panel-products">
+        <h2>Produtos</h2>
+        <p class="panel-desc">Adicione, edite ou desactive produtos. Alterações ficam em rascunho até publicar.</p>
+        <button class="btn btn-primary" id="btn-add-product" style="margin-bottom:16px">+ Adicionar produto</button>
+        <div class="product-list" id="product-list"></div>
+      </section>
+
+      <!-- Zones -->
+      <section class="panel" id="panel-zones">
+        <h2>Zonas de entrega</h2>
+        <p class="panel-desc">Preços de entrega por zona de Luanda.</p>
+        <button class="btn btn-primary" id="btn-add-zone" style="margin-bottom:16px">+ Adicionar zona</button>
+        <div id="zone-list"></div>
+      </section>
+
+      <!-- Texts -->
+      <section class="panel" id="panel-texts">
+        <h2>Textos do site (i18n)</h2>
+        <p class="panel-desc">Títulos e subtítulos da homepage em Português e Inglês.</p>
+        <div class="form-group">
+          <label class="form-label">Hero título (PT)</label>
+          <input type="text" class="form-input" id="text-hero-pt" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hero subtítulo (PT)</label>
+          <textarea class="form-textarea" id="text-sub-pt" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hero title (EN)</label>
+          <input type="text" class="form-input" id="text-hero-en" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hero subtitle (EN)</label>
+          <textarea class="form-textarea" id="text-sub-en" rows="2"></textarea>
+        </div>
+        <button class="btn btn-secondary" id="btn-save-texts">Aplicar textos (rascunho)</button>
+      </section>
+
+      <!-- Site images -->
+      <section class="panel" id="panel-images">
+        <h2>Imagens do site</h2>
+        <p class="panel-desc">Hero, banners e slots especiais. Carregue ou escolha da biblioteca de média.</p>
+        <div id="site-images-list"></div>
+      </section>
+
+      <!-- Media -->
+      <section class="panel" id="panel-media">
+        <h2>Biblioteca de média</h2>
+        <p class="panel-desc">Upload de fotos (Cloudinary). Toque numa imagem para copiar o URL ou atribuir a um produto/slot.</p>
+        <button class="btn btn-primary" id="btn-upload-media" style="margin-bottom:16px">+ Carregar imagens</button>
+        <input type="file" id="media-file-input" accept="image/*" multiple hidden />
+        <div class="media-grid" id="media-grid"></div>
+      </section>
+
+      <!-- Orders -->
+      <section class="panel" id="panel-orders">
+        <h2>Pedidos</h2>
+        <p class="panel-desc">Pedidos recebidos dos clientes (formulário “Fazer Pedido”).</p>
+        <div id="orders-list"><div class="empty-state">Abra este separador para carregar.</div></div>
+      </section>
+
+    </main>
+
+    <!-- Sticky actions -->
+    <div class="sticky-actions">
+      <button class="btn btn-secondary" id="btn-save-draft">Guardar rascunho</button>
+      <button class="btn btn-primary" id="btn-publish">Publicar na loja</button>
+    </div>
+  </div>
+
+  <!-- Product modal -->
+  <div class="modal-overlay" id="modal-product">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-product-title">Produto</h3>
+        <button class="modal-close" id="modal-product-close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Nome *</label>
+          <input type="text" class="form-input" id="p-name" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Preço (Kz) *</label>
+            <input type="number" class="form-input" id="p-price" inputmode="decimal" min="0" step="100" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <input type="text" class="form-input" id="p-category" placeholder="Ex: Perfumes" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descrição</label>
+          <textarea class="form-textarea" id="p-desc" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Imagem (URL)</label>
+          <input type="url" class="form-input" id="p-image" placeholder="https://…" />
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+            <button type="button" class="btn btn-secondary btn-sm" id="p-upload-btn">Carregar</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="p-pick-media">Escolher da média</button>
+          </div>
+          <input type="file" id="p-file-input" accept="image/*" hidden />
+          <img id="p-image-preview" src="" alt="" style="display:none;max-width:120px;margin-top:10px;border-radius:8px" />
+        </div>
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:8px;font-size:0.9rem">
+            <input type="checkbox" id="p-active" checked /> Produto activo (visível na loja)
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modal-product-cancel">Cancelar</button>
+        <button class="btn btn-primary" id="modal-product-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
