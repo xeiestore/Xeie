@@ -8,9 +8,9 @@
 (function () {
   "use strict";
 
-  // ---------- Config (edit after Worker deploy) ----------
-  const PUBLISH_URL = "https://xeie-api.YOUR_SUBDOMAIN.workers.dev/publish"; // ← change after deploy
-  const ORDERS_URL  = "https://xeie-api.YOUR_SUBDOMAIN.workers.dev/orders";
+  // ---------- Config ----------
+  const PUBLISH_URL = "https://xeie-api.xeieloja.workers.dev/publish";
+  const ORDERS_URL  = "https://xeie-api.xeieloja.workers.dev/orders";
 
   const CLOUD_NAME   = "efvlvhce";
   const UPLOAD_PRESET = "xeie_media";
@@ -33,7 +33,7 @@
   let images = {};
   let mediaLibrary = [];
   let editingProductId = null;
-  let mediaPickerTarget = null; // "product" | slotKey
+  let mediaPickerTarget = null;
 
   // ---------- Helpers ----------
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -65,7 +65,6 @@
     return Number(n || 0).toLocaleString("pt-AO") + " Kz";
   }
 
-  // ---------- Auth ----------
   function isAuthed() {
     return sessionStorage.getItem(LS.auth) === "1" || localStorage.getItem(LS.auth) === "1";
   }
@@ -93,7 +92,6 @@
     switchPanel("dashboard");
   }
 
-  // ---------- Data load / save drafts ----------
   function loadAll() {
     products = loadJSON(LS.products, window.XEIE_DEFAULT_PRODUCTS || []);
     zones    = loadJSON(LS.zones,    window.XEIE_DEFAULT_ZONES || []);
@@ -111,7 +109,6 @@
     toast("Rascunho guardado neste dispositivo");
   }
 
-  // ---------- Render ----------
   function renderAll() {
     renderDashboard();
     renderProducts();
@@ -231,7 +228,6 @@
       .replace(/"/g, "&quot;");
   }
 
-  // ---------- Panels ----------
   function switchPanel(id) {
     $$(".panel").forEach((p) => p.classList.remove("active"));
     $$(".admin-nav button").forEach((b) => b.classList.remove("active"));
@@ -242,7 +238,6 @@
     if (id === "orders") loadOrders();
   }
 
-  // ---------- Product modal ----------
   function openProductModal(product) {
     editingProductId = product ? product.id : null;
     $("#modal-product-title").textContent = product ? "Editar produto" : "Novo produto";
@@ -290,7 +285,6 @@
     toast("Produto guardado (rascunho)");
   }
 
-  // ---------- Cloudinary unsigned upload ----------
   async function uploadToCloudinary(file) {
     const form = new FormData();
     form.append("file", file);
@@ -325,7 +319,6 @@
     }
   }
 
-  // ---------- Publish ----------
   async function publish() {
     const pwd = prompt("Confirme a password de admin para publicar:");
     if (!pwd) return;
@@ -334,13 +327,7 @@
       return;
     }
 
-    const catalog = {
-      products,
-      zones,
-      texts,
-      images,
-    };
-
+    const catalog = { products, zones, texts, images };
     const btn = $("#btn-publish");
     btn.disabled = true;
     btn.textContent = "A publicar…";
@@ -367,7 +354,6 @@
     }
   }
 
-  // ---------- Orders ----------
   async function loadOrders() {
     const container = $("#orders-list");
     container.innerHTML = `<div class="empty-state">A carregar pedidos…</div>`;
@@ -415,9 +401,7 @@
     }
   }
 
-  // ---------- Events ----------
   function bindEvents() {
-    // Login
     $("#login-form")?.addEventListener("submit", (e) => {
       e.preventDefault();
       const pwd = $("#login-password").value;
@@ -436,16 +420,13 @@
       showLogin();
     });
 
-    // Nav
     $$(".admin-nav button").forEach((btn) => {
       btn.addEventListener("click", () => switchPanel(btn.dataset.panel));
     });
 
-    // Sticky actions
     $("#btn-save-draft")?.addEventListener("click", saveDraft);
     $("#btn-publish")?.addEventListener("click", publish);
 
-    // Products
     $("#btn-add-product")?.addEventListener("click", () => openProductModal(null));
     $("#product-list")?.addEventListener("click", (e) => {
       const editId = e.target.closest("[data-edit]")?.dataset.edit;
@@ -468,7 +449,6 @@
     $("#modal-product-cancel")?.addEventListener("click", closeProductModal);
     $("#modal-product-save")?.addEventListener("click", saveProductFromModal);
 
-    // Product image upload inside modal
     $("#p-upload-btn")?.addEventListener("click", () => $("#p-file-input").click());
     $("#p-file-input")?.addEventListener("change", async (e) => {
       const file = e.target.files?.[0];
@@ -487,7 +467,6 @@
       toast("Toque numa imagem da biblioteca para a usar no produto");
     });
 
-    // Zones
     $("#btn-add-zone")?.addEventListener("click", () => {
       const name = prompt("Nome da zona (ex: Talatona):");
       if (!name) return;
@@ -506,7 +485,6 @@
       }
     });
 
-    // Texts
     $("#btn-save-texts")?.addEventListener("click", () => {
       texts.pt = {
         heroTitle: $("#text-hero-pt").value.trim(),
@@ -519,7 +497,6 @@
       toast("Textos actualizados (rascunho)");
     });
 
-    // Site images
     $("#site-images-list")?.addEventListener("click", (e) => {
       const uploadKey = e.target.closest("[data-slot-upload]")?.dataset.slotUpload;
       const pickKey = e.target.closest("[data-slot-pick]")?.dataset.slotPick;
@@ -551,7 +528,6 @@
       }
     });
 
-    // Media library
     $("#btn-upload-media")?.addEventListener("click", () => $("#media-file-input").click());
     $("#media-file-input")?.addEventListener("change", async (e) => {
       const files = [...(e.target.files || [])];
@@ -600,7 +576,6 @@
     });
   }
 
-  // ---------- Init ----------
   document.addEventListener("DOMContentLoaded", () => {
     bindEvents();
     if (isAuthed()) showAdmin();
