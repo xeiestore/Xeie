@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroEl = document.querySelector('.hero');
   const hasDarkHero = heroEl && !heroEl.classList.contains('hero-logo-only');
 
-  // On pages without a dark hero, keep header solid from the start
   if (!hasDarkHero) {
     siteHeader?.classList.add('scrolled');
   }
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleScroll() {
     const scrollY = window.scrollY;
 
-    // Header solid state — only toggle on pages with a dark hero
     if (hasDarkHero) {
       if (scrollY > 40) {
         siteHeader?.classList.add('scrolled');
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Announce bar hide on scroll down, show near top
     if (scrollY > lastScroll && scrollY > 80) {
       announceBar?.classList.add('hidden');
       if (siteHeader) siteHeader.style.top = '0';
@@ -75,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   drawerClose?.addEventListener('click', closeDrawer);
   drawerOverlay?.addEventListener('click', closeDrawer);
 
-  // Close drawer on any link click inside it
   drawer?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeDrawer);
   });
@@ -165,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
   searchToggle?.addEventListener('click', openSearch);
   searchClose?.addEventListener('click', closeSearch);
 
-  // Close search on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeSearch();
@@ -242,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update toggle labels
     document.querySelectorAll('.lang-toggle').forEach(btn => {
       const pt = btn.querySelector('[data-lang="pt"]');
       const en = btn.querySelector('[data-lang="en"]');
@@ -307,3 +301,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/* Load live catalog renderer (products.js defaults + app.js) */
+(function loadCatalogScripts() {
+  function inject(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector('script[src="' + src + '"]')) {
+        resolve();
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
+  }
+  inject('js/products.js')
+    .then(() => inject('js/app.js'))
+    .catch((e) => console.warn('Catalog scripts failed', e));
+})();

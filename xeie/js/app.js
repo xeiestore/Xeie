@@ -15,10 +15,10 @@
 
   function escapeHtml(str) {
     return String(str || "")
-      .replace(/&/g, "&")
-      .replace(/</g, "<")
-      .replace(/>/g, ">")
-      .replace(/"/g, """);
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
   function placeholderSvg() {
@@ -78,7 +78,6 @@
   }
 
   async function loadCatalog() {
-    // Prefer live catalog; fall back to products.js defaults
     try {
       const res = await fetch(CATALOG_URL + "?t=" + Date.now(), {
         cache: "no-store",
@@ -95,9 +94,15 @@
     return window.XEIE_DEFAULT_PRODUCTS || [];
   }
 
-  document.addEventListener("DOMContentLoaded", async () => {
+  async function boot() {
     const products = await loadCatalog();
     window.XEIE_LIVE_PRODUCTS = products;
     renderGrids(products);
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
 })();
